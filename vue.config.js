@@ -3,6 +3,11 @@ function resolve (dir) {
     return path.join(__dirname, dir)
 }
 
+// 3-1做适配
+const px2rem = require('postcss-px2rem')
+const postcss = px2rem({
+  remUnit: 75   //remUnit = 设计稿/等分数10， 网易严选首页750宽，正好相当于是设计稿宽度，所以值为750/10 = 75
+})
 
 module.exports = {
   // outputDir: "damu", // 打包输出的目录
@@ -22,6 +27,15 @@ module.exports = {
     //   })
     // },
 
+  },
+  css: { //3-1做适配
+    loaderOptions: {
+      postcss: {
+        plugins: [
+          postcss
+        ]
+      }
+    }
   },
   configureWebpack:{
     //原生webpack的配置,如果webpack玩的溜就在这里写配置也是一样的
