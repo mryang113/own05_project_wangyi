@@ -1,0 +1,1 @@
+export const GETNAVLIST= "getNavList"; //主页获取导航商家信息

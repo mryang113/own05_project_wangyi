@@ -13,8 +13,8 @@ module.exports = {
   // outputDir: "damu", // 打包输出的目录
   lintOnSave:false, //不让他检查 true,有 'error'字符串 vue文件有修改服务器就会报错
   devServer:{ //配置启动项位置
-    host: "127.0.0.1", //主机地址
-    port: 3001, // 端口
+    // host: "127.0.0.1", //主机地址
+    // port: 3001, // 端口
     // open: true  //是否自动打开浏览器
     // before(app){
     //   console.log("----",app); //开发devServer回调这个钩子,在服务器会打印
@@ -26,6 +26,15 @@ module.exports = {
     //       })
     //   })
     // },
+    proxy:{ //vue-cli_解决跨域要做代理的配置
+      '/3001': {
+          target: 'http://localhost:3001',
+          changeOrigin: true,
+          pathRewrite:{
+              "^/3001":""
+          }
+      }
+    },
 
   },
   css: { //3-1做适配

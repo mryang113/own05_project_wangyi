@@ -5,7 +5,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'App',
   components: {
@@ -14,6 +13,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped >
+// @import url('./static/iconfont/iconfont');
   #app 
     width 100%
     height 100%
