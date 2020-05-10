@@ -4,6 +4,12 @@
     <div class="box1">box111</div>
     <div class="box2">box22222</div>
   </div>
+
+
+  <!-- <span class="title">{{cateObj.category.name}}</span>
+		<span class="desc">{{cateObj.category.frontDesc}}</span> -->
+		<!-- <ShopList :shopList='cateObj.itemList'></ShopList> -->
+
 </template>
 
 <script>

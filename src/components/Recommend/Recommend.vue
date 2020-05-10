@@ -138,7 +138,7 @@ export default {
       // console.log(HomeRecommendData);
       this.homeRecommendData = homeRecommendData;
       this.length = homeRecommendData.categoryHotSellModule.categoryList.length +1;
-      console.log(this.length);
+      // console.log(this.length);
     },
     renderSwiper() {
       this.$nextTick(() => {

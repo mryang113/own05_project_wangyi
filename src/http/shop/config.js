@@ -14,6 +14,11 @@ export default {
       method: "get",
       corsUrl: "/3001"
     },
+    getCateListBanner: {
+      url: "/indexCateList",
+      method: "get",
+      corsUrl: "/3001"
+    },
 
 
 

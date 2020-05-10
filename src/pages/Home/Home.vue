@@ -21,8 +21,15 @@
       <div class="navWrap">
         <div class="nav" ref="navContainer">
           <ul class="navUl">
-            <li class="active">推荐</li>
-            <li v-for="(navItem,index) in navListData" :key="index">{{navItem.name}}</li>
+            <li :class="{active: navIndex === 0}" @click="changeNavIndex(0)">推荐</li>
+            <li 
+              :class="{active: navIndex === (index + 1)}"
+              v-for="(navItem,index) in navListData" 
+              :key="index"
+              @click="changeNavIndex((index + 1),navItem.id)"
+            >
+              {{navItem.name}}
+            </li>
           </ul>
         </div>
         <!-- nav滑屏后侧 向下的字体图标-->
@@ -35,7 +42,8 @@
     <!-- 内容区 -->
     <div class="homeContent">
       <!-- Recommend 组件-->
-      <v-recommend></v-recommend>
+      <v-recommend v-if="navIndex === 0"></v-recommend>
+      <v-cateList v-else :navId= 'navId'></v-cateList>
     </div>
   </div>
 </template>
@@ -45,10 +53,18 @@ import BScroll from "better-scroll";
 import { mapActions, mapState } from "vuex";
 import { GETNAVLIST } from "@/store/mutation_types";
 import Recommend from "../../components/Recommend/Recommend";
+import CateList from "../../components/CateList/CateList";
 export default {
+  data(){
+    return {
+      navIndex: 0, //导航下标
+      navId: 0, //导航每一项的id
+    }
+  },
   name: "Home",
   components: {
-    "v-recommend": Recommend
+    "v-recommend": Recommend,
+    "v-cateList": CateList
   },
   computed: {
     ...mapState({
@@ -56,6 +72,11 @@ export default {
     })
   },
   methods: {
+    changeNavIndex(navIndex,navId){
+      // console.log(navIndex,navId);
+      this.navIndex =navIndex
+      this.navId =navId
+    },
     ...mapActions([GETNAVLIST]),
     renderNavList() {
       this.$nextTick(() => {
