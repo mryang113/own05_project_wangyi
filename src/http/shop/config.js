@@ -4,18 +4,28 @@ export default {
   name: "wrap",
   // baseUrl:"http://localhost:4000",
   api: {
-    getNavList: {
+    getNavList: { 
       url: "/indexCateModule",
       method: "get",
       corsUrl: "/3001"
     },
-    getHomeRecommend: {
+    getHomeRecommend: { //获取主页数据
       url: "/indexRecommend",
       method: "get",
       corsUrl: "/3001"
     },
-    getCateListBanner: {
+    getCateListBanner: {  //获取导航除推荐以外的数据
       url: "/indexCateList",
+      method: "get",
+      corsUrl: "/3001"
+    },
+    getCateLeftNav: {  //获取分类左侧导航数据
+      url: "/cateLeftNav",
+      method: "get",
+      corsUrl: "/3001"
+    },
+    getCateRightList: {  //获取分类左侧导航数据
+      url: "/cateRightList",
       method: "get",
       corsUrl: "/3001"
     },

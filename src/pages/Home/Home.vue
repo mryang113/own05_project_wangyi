@@ -199,11 +199,12 @@ export default {
             color #333
             &.active:after
               content ''
-              height 1px
+              height 3px
               width 100%
               position absolute
               bottom 1px
               left 0
+              z-index 2
               background #BB2C08
       .more
         position absolute
@@ -222,7 +223,7 @@ export default {
     top 252px
     left 0
     width 100%
-    // height calc(100vh-252px) //这里不是小程序估计不支持这种写法
+    // height calc(100vh - 252px) 
     height 1000px
     // overflow hidden
 .text0000000000000000

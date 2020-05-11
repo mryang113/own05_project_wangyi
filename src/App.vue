@@ -1,15 +1,18 @@
 <template>
   <div id="app">
     <router-view></router-view>
+    <FooterGuide></FooterGuide>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'App',
-  components: {
+  import FooterGuide from '@/components/FooterGuide/FooterGuide'
+  export default {
+    name: 'App',
+    components: {
+      FooterGuide, //Es6简写形式
+    }
   }
-}
 </script>
 
 <style lang="stylus" scoped >

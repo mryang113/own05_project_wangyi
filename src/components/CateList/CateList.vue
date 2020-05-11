@@ -51,7 +51,7 @@ export default {
   },
   data() {
     return {
-      cateBannerList: [] //防止导航分类轮播数据
+      cateBannerList: [] //放置导航分类轮播数据
     };
   },
   methods: {
