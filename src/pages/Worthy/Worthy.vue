@@ -62,7 +62,7 @@
         >
           <template>
             <div class="cell-item" v-for="(item,index) in data" :key="index">
-              <div class="item-body">
+              <div class="item-body" v-if="item">
                 
                 <img 
                   :src="item.topics[0].newAppBanner?item.topics[0].newAppBanner:item.topics[0].picUrl" 
@@ -96,6 +96,7 @@
   import Swiper from 'swiper'
   // import {mapState,mapActions} from 'vuex'
   // import {GETWORTHYLISTFIRST} from '@/store/mutation_types'
+  import axios from "axios";
   export default {
     name: 'Worthy',
     data(){
@@ -159,13 +160,19 @@
       },
       async loadmore(){
         let index = ++this.index
+
         // console.log('-----',index);
-        let newData = await this.$http.shop.getWangyiAutoList(
-          {index}
-          // {url= `/topic/v1/find/recAuto.json?page=${index}&size=5`}
-        )
-        // console.log(newData);
-        this.data = this.data.concat(newData.data.result)
+        // let newData = await this.$http.shop.getWangyiAutoList(
+        //   {index} //这样简单请求可以,借助封装 只是index那边不会接受
+        //   // {url= `/topic/v1/find/recAuto.json?page=${index}&size=5`}
+        // )
+
+        let {data} = await axios({ //这里写全的话,要写代理分类 api
+          url: `/api/topic/v1/find/recAuto.json?page=${index}&size=5`, 
+          method: 'GET'
+        })
+        // console.log(data);
+        this.data = this.data.concat(data.data.result)
       }
         
     },
