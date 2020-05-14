@@ -34,15 +34,26 @@ export default {
       method: "get",
       corsUrl: "/3001"
     },
-    getWorthyListFirst: {  //获取值得买worthy列表首屏数据
+    getWorthyListFirst: {  //获取值得买worthy列表首屏测试本地数据
       url: "/worthyListFirst",
       method: "get",
       corsUrl: "/3001"
     },
-    getWorthyList: {  //获取值得买worthy列表上拉数据
+    getWorthyList: {  //获取值得买worthy列表上拉测试本地数据
       url: "/worthyList",
       method: "get",
       corsUrl: "/3001"
+    },
+    getWangyiList: {  //获取网易值得买实时数据
+      url: "/topic/v1/find/recManual.json",
+      method: "get",
+      corsUrl: "/api"
+    },
+    getWangyiAutoList: {  //获取网易值得买实时触底动态数据
+      url: `/topic/v1/find/recAuto.json?page=1&size=5`,
+      // url: `/topic/v1/find/recAuto.json?page=${index}&size=5`,
+      method: "get",
+      corsUrl: "/api"
     },
 
 

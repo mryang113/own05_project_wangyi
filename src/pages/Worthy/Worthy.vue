@@ -75,7 +75,7 @@
                   <div class="name">{{item.topics[0].nickname}}</div>
                   <div class="like" >
                       <i ></i>
-                      <div class="like-total">{{item.topics[0].readCount}}</div>  
+                      <div class="like-total">{{Math.ceil(item.topics[0].readCount/1000)}}k</div>  
                   </div>
                 </div>
               </div>
@@ -104,6 +104,7 @@
         // worthyList: [] //整合后的数组
         data:[], //存放瀑布流数据
         col:2,
+        index: 0, 
       }
     },
     methods: {
@@ -134,11 +135,21 @@
       //   console.log(result,'++++');  //3-1 测试处理数据
       // }
 
+      // // 这个是本地数据
+      // async getListData(){
+      //   let result = await this.$http.shop.getWorthyList()
+      //   this.data = result.data.result
+      //   // console.log(result);
+      // },
+
+      //这个是网易实时接口
       async getListData(){
-        let result = await this.$http.shop.getWorthyList()
-        this.data = result.data.result
+        let result = await this.$http.shop.getWangyiList()
+        this.data = result.data
         // console.log(result);
       },
+
+
       scroll(scrollData){
         // console.log(scrollData)
       },
@@ -146,9 +157,15 @@
         this.col = col
         console.log(this.col)
       },
-      loadmore(index){
-        console.log('-----',index);
-        this.data = this.data.concat(this.data)
+      async loadmore(){
+        let index = ++this.index
+        // console.log('-----',index);
+        let newData = await this.$http.shop.getWangyiAutoList(
+          {index}
+          // {url= `/topic/v1/find/recAuto.json?page=${index}&size=5`}
+        )
+        // console.log(newData);
+        this.data = this.data.concat(newData.data.result)
       }
         
     },
@@ -173,12 +190,12 @@
       // }),
 
 
-      // itemWidth(){  
-      //   return (138*0.5*(document.documentElement.clientWidth/750)*5)
-      // },
-      // gutterWidth(){
-      //   return (9*0.5*(document.documentElement.clientWidth/750)*5) 
-      // }
+      itemWidth(){  
+        return (138*0.5*(document.documentElement.clientWidth/750)*5)
+      },
+      gutterWidth(){
+        return (9*0.5*(document.documentElement.clientWidth/750)*5) 
+      }
       
     },
 
