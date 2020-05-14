@@ -3,7 +3,7 @@
 // import local from "@/util/local"
 
 import http from "@/http"
-import {GETNAVLIST} from "@/store/mutation_types"
+import {GETNAVLIST,GETWORTHYLISTFIRST} from "@/store/mutation_types"
 
 const OK=0;
 const ERROR=1;
@@ -18,6 +18,11 @@ export default {
         let navListData= await http.shop.getNavList();
         // console.log(navListData,'---');
         commit(GETNAVLIST,navListData)  // 异步行为： 发送请求获取数据
+
+    },
+    async [GETWORTHYLISTFIRST]({commit}){
+        let worthyListFirstData= await http.shop.getWorthyListFirst();
+        commit(GETWORTHYLISTFIRST,worthyListFirstData.data)  // 异步行为： 发送请求获取数据
 
     },
 }

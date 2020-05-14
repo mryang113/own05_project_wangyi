@@ -29,6 +29,21 @@ export default {
       method: "get",
       corsUrl: "/3001"
     },
+    getWorthyBanner: {  //获取值得买worthy轮播数据
+      url: "/worthyBanner",
+      method: "get",
+      corsUrl: "/3001"
+    },
+    getWorthyListFirst: {  //获取值得买worthy列表首屏数据
+      url: "/worthyListFirst",
+      method: "get",
+      corsUrl: "/3001"
+    },
+    getWorthyList: {  //获取值得买worthy列表上拉数据
+      url: "/worthyList",
+      method: "get",
+      corsUrl: "/3001"
+    },
 
 
 

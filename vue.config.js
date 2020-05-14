@@ -28,12 +28,20 @@ module.exports = {
     // },
     proxy:{ //vue-cli_解决跨域要做代理的配置
       '/3001': {
-          target: 'http://localhost:3001',
-          changeOrigin: true,
-          pathRewrite:{
-              "^/3001":""
-          }
-      }
+        target: 'http://localhost:3001',
+        changeOrigin: true, //这个暂时用不到好像
+        pathRewrite:{
+            "^/3001":""
+        }
+      },
+      '/api': {
+        target: 'https://m.you.163.com',
+        changeOrigin: true,
+        pathRewrite:{
+            "^/api":""
+        }
+      },
+
     },
 
   },
